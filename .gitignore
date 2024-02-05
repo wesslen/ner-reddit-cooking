@@ -162,3 +162,5 @@ cython_debug/
 README_files/*
 01-writeup_files/
 01-writeup_files
+output/
+packages/
