@@ -19,7 +19,7 @@ $ env PRODIGY_KEY=XXXX-XXXX-XXXX-XXXX
 
 3. Install [Quarto](https://quarto.org/docs/get-started/). 
 
-4. Run experiments in [00-experiment.ipynb](/00-experiment.ipynb) Jupyter notebook. 
+4. Run experiments in [00-experiments.ipynb](/00-experiments.ipynb) Jupyter notebook. 
 
 5. Run `01-writeup.qmd`. Modify `format` to get either [`docx`](/01-writeup.docx), [`html`](01-writeup.html), or [`pdf`](01-writeup.pdf).
 
