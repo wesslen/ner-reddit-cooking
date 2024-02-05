@@ -1,14 +1,12 @@
 # Steps to reproduce repo
 
+1. Clone
+
 ```
-git clone 
+git clone https://github.com/wesslen/dsba6188-homework-1.git
 ```
 
-# Steps to create repo
-
-1. Create [GitHub Repo via VSCode](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git).
-
-2. Create README, `.gitignore`, virtual environment (`requirements.txt`), add `/data` files
+2. Create virtual environment
 
 ```
 $ python3.9 -m virtualenv venv
@@ -21,6 +19,8 @@ $ env PRODIGY_KEY=XXXX-XXXX-XXXX-XXXX
 
 3. Install [Quarto](https://quarto.org/docs/get-started/). 
 
-4. Run experiments. Use `01-writeup.qmd` and different doc format.
+4. Run experiments in [00-experiment.ipynb](/00-experiment.ipynb) Jupyter notebook. 
 
-5. Save models to Hugging Face Hub
+5. Run `01-writeup.qmd`. Modify `format` to get either [`docx`](/01-writeup.docx), [`html`](01-writeup.html), or [`pdf`](01-writeup.pdf).
+
+6. Save models as wheel files and/or to Hugging Face Hub. See https://huggingface.co/wesslen/en_ner_reddit_cooking for example.
