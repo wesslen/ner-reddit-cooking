@@ -1,5 +1,5 @@
 ---
-format: pdf
+format: docx
 execute:
   eval: false
 ---
@@ -47,9 +47,9 @@ For experiment 5, we'll explore whether adding word embeddings improves model pe
 | 4 | GPT3.5 ZShot + Workshop Corrected | 699          | Hold out eval      | None           | 0.38 | 0.44 | 0.34 |
 | 5 | GPT3.5 ZShot + Workshop (raw)     | 1577         | Hold out eval      | en_core_web_lg | 0.59 | 0.58 | 0.59 |
 
-### Saving Models (tar.gz)
+### Saving Models (wheel)
 
-To export each model, we used `spacy package`, saving it as a Python package to a `models` folder. This saves the model as `tar.gz` which compressed the model.
+To export each model, we used `spacy package`, saving it as a Python package to a `models` folder. This saves the model as `wheel` which compressed the model.
 
 To install any of the models, you can the use `pip install` like
 
@@ -68,6 +68,5 @@ import spacy
 nlp = spacy.load("en_ner_reddit_cooking")
 doc = nlp("Make a dressing with mayo, plain yogurt, curry powder, mustard powder, mustard, ground coriander.")
 doc.ents
+# (mayo, plain yogurt, curry powder, mustard powder, mustard, ground coriander)
 ```
-
-## 
