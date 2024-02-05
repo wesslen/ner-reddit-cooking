@@ -81,29 +81,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>We ran five experiments, explained below. See the appendix for the results and the accompanying Jupyter notebook for reproducibility.</p>
+<p>We ran five experiments. See the appendix and the accompanying Jupyter notebook for reproducibility.</p>
 <section id="develop-using-gpt3.5-zeroshot" class="level3">
 <h3 class="anchored" data-anchor-id="develop-using-gpt3.5-zeroshot">1. Develop using GPT3.5 zeroshot</h3>
-<p>We developed our first model using <code>gpt3-5-zeroshot.jsonl</code>, loading it with <code>db-in</code> and named it <code>hmwk_1_zeroshot</code>. We opted to use <code>--training patience=800</code> to reduce the early stopping criteria to improve the time to train.</p>
-<p>For this initial model, We did not have a dedicated hold out dataset, and used Prodigy’s automatic partitioning of 20% the <code>hmwk_1_zeroshot</code> as the evaluation dataset. The model attained <strong>32%</strong> F1 score.</p>
+<p>We developed our first model using <code>gpt3-5-zeroshot.jsonl</code>, loading it with <code>db-in</code> and named it <code>hmwk_1_zeroshot</code>. We opted to use <code>--training patience=800</code> to reduce the early stopping criteria to improve the time to train. For this initial model, we did not have a dedicated hold out dataset, and used Prodigy’s automatic partitioning of 20% the <code>hmwk_1_zeroshot</code> as the evaluation dataset. The model attained <strong>32%</strong> F1 score.</p>
 </section>
 <section id="create-200-unlabeled-for-evaluation-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="create-200-unlabeled-for-evaluation-dataset">2. Create 200 unlabeled for evaluation dataset</h3>
-<p>For the 2nd experiment, We wanted to provide a dedicated hold-out evaluation dataset. We used a previously annotated dataset that was a <code>.jsonl</code> file and loaded it with <code>db-in</code> and naming it <code>hmwk_1_eval</code>. We then retrain on <code>hmwk-1-zeroshot</code> and eval on <code>hmwk-1-eval</code>. The model attained <strong>36%</strong> F1 score. We also ran a train-curve, which provided evidence that more annotated data would likely improve the model’s performance.</p>
+<p>For the 2nd experiment, we need dedicated hold-out evaluation dataset. We used a previously annotated <code>.jsonl</code> file and loaded it with <code>db-in</code> and naming it <code>hmwk_1_eval</code>. We then retrain on <code>hmwk-1-zeroshot</code> and eval on <code>hmwk-1-eval</code>. The model attained <strong>36%</strong> F1 score. We also ran a train-curve, which provided evidence that more annotated data would likely improve the model’s performance.</p>
 </section>
 <section id="train-with-workshop-data-with-model-in-loop" class="level3">
 <h3 class="anchored" data-anchor-id="train-with-workshop-data-with-model-in-loop">3. Train with Workshop Data with model in loop</h3>
-<p>For the next two experiments, we’ll explore: quantity vs.&nbsp;quality.</p>
-<p>In experiment 3, we’ll use all of the workshop data without correcting it (i.e., quantity). We loaded the data with <code>db-in</code>, named it <code>hmwk-1-workshop</code>, and merged it with the GPT3.5 Zero Shot as <code>hmwk_1_train_exp3</code>. We kept <code>hmwk_1_eval</code> as the eval dataset. The model attained <strong>52%</strong> F1 score; therefore adding the workshop dataset adds <strong>+16%</strong> F1 score.</p>
+<p>For the next two experiments, we’ll explore: quantity vs.&nbsp;quality. In experiment 3, we’ll use all of the workshop data without correcting it (i.e., quantity). We loaded the data with <code>db-in</code>, named it <code>hmwk-1-workshop</code>, and merged it with the GPT3.5 Zero Shot as <code>hmwk_1_train_exp3</code>. We kept <code>hmwk_1_eval</code> as the eval dataset. The model attained <strong>52%</strong> F1 score; therefore adding the workshop dataset adds <strong>+16%</strong> F1 score.</p>
 </section>
 <section id="run-model-as-annotator-on-workshop-data-to-correct-a-sample" class="level3">
 <h3 class="anchored" data-anchor-id="run-model-as-annotator-on-workshop-data-to-correct-a-sample">4. Run <code>model-as-annotator</code> on Workshop data to correct a sample</h3>
-<p>In experiment 4, we’ll focus on quality, correcting ~200 workshop annotations. We’ll use <code>review</code> so we can view both the model-predicted and workshop annotations. You could use <code>ner.manual</code> (original annotations) or <code>ner.correct</code> model predicted alternatively. Merging the corrected annotations with the GPT3.5 Zero Shot, yielded the <code>hmwk_1_train_exp4</code>. We’ll keep using <code>hmwk_1_eval</code> as the evaluation dataset.</p>
-<p>The model attained <strong>38%</strong> F1 score. This indicates that while the full workshop dataset may have errors, it provides net gain in performance (quantity over quality).</p>
+<p>In experiment 4, we’ll focus on quality, correcting ~200 workshop annotations. We’ll use <code>review</code> so we can view both the model-predicted and workshop annotations. You could use <code>ner.manual</code> (original annotations) or <code>ner.correct</code> model predicted alternatively. Merging the corrected annotations with the GPT3.5 Zero Shot, yielded the <code>hmwk_1_train_exp4</code>. We’ll keep using <code>hmwk_1_eval</code> as the evaluation dataset. The model attained <strong>38%</strong> F1 score. This indicates that while the full workshop dataset may have errors, it provides net gain in performance (quantity over quality).</p>
 </section>
 <section id="use-word-vectors-transfer-learning-to-improve-model-performance" class="level3">
 <h3 class="anchored" data-anchor-id="use-word-vectors-transfer-learning-to-improve-model-performance">5. Use word vectors (transfer learning) to improve model performance</h3>
-<p>For experiment 5, we’ll explore whether adding word embeddings improves model performance (see <a href="https://prodi.gy/docs/named-entity-recognition#transfer-learning">Prodigy docs</a>). We used experiment 3 training dataset (best performance) and use <code>hmwk_1_eval</code> as the eval dataset. The model attained <strong>59%</strong> F1 score, which is the best performing model/experiment.</p>
+<p>For experiment 5, we’ll explore whether adding word embeddings improves model performance (see <a href="https://prodi.gy/docs/named-entity-recognition#transfer-learning">Prodigy docs</a>). We used experiment 3 training dataset (best performance) and use <code>hmwk_1_eval</code> as the eval dataset. The model attained <strong>59%</strong> F1 score, which is the best performing model/experiment. However, this model is much larger (600MB vs 6MB); therefore, in prod, we may still want to go with model 3.</p>
 </section>
 </section>
 <section id="appendix" class="level2">
@@ -198,6 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Successfully</span> built en_ner_reddit_cooking</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Installing</span> collected packages: en-ner-reddit-cooking</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Successfully</span> installed en-ner-reddit-cooking-5.0.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can then run the model like:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spacy</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nlp <span class="op">=</span> spacy.load(<span class="st">"en_ner_reddit_cooking"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> nlp(<span class="st">"Make a dressing with mayo, plain yogurt, curry powder, mustard powder, mustard, ground coriander."</span>)</span>
