@@ -21,6 +21,6 @@ $ env PRODIGY_KEY=XXXX-XXXX-XXXX-XXXX
 
 4. Run experiments in [00-experiments.ipynb](/00-experiments.ipynb) Jupyter notebook. 
 
-5. Run `01-writeup.qmd`. Modify `format` to get either [`docx`](/01-writeup.docx), [`html`](01-writeup.html), or [`pdf`](01-writeup.pdf).
+5. Run `01-writeup.qmd`. Modify `format` to get either [`docx`](/01-writeup.docx), [`html`](/01-writeup.html), or [`pdf`](/01-writeup.pdf).
 
 6. Save models as wheel files and/or to Hugging Face Hub. See https://huggingface.co/wesslen/en_ner_reddit_cooking for example.

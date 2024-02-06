@@ -109,77 +109,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="experiment-performances">Experiment Performances</h3>
 <table class="table">
 <colgroup>
-<col style="width: 2%">
-<col style="width: 33%">
-<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 20%">
+<col style="width: 14%">
 <col style="width: 18%">
-<col style="width: 15%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 5%">
+<col style="width: 16%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>#</th>
 <th>Training Dataset</th>
 <th>Training (n)</th>
-<th>Evaluation Dataset</th>
+<th>Evaluation</th>
 <th>Base Model</th>
 <th>F1</th>
 <th>P</th>
 <th>R</th>
+<th>Size</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>GPT3.5 ZShot</td>
+<td>GPT3.5</td>
 <td>400</td>
 <td>20% of training</td>
 <td>None</td>
 <td>0.32</td>
 <td>0.44</td>
 <td>0.24</td>
+<td>6 MB</td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>GPT3.5 ZShot</td>
+<td>GPT3.5</td>
 <td>500</td>
 <td>Hold out eval</td>
 <td>None</td>
 <td>0.36</td>
 <td>0.41</td>
 <td>0.31</td>
+<td>6 MB</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>GPT3.5 ZShot + Workshop (raw)</td>
+<td>GPT3.5 + Workshop</td>
 <td>1577</td>
 <td>Hold out eval</td>
 <td>None</td>
 <td>0.52</td>
 <td>0.56</td>
 <td>0.48</td>
+<td>6 MB</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>GPT3.5 ZShot + Workshop Corrected</td>
+<td>GPT3.5 + Corrected</td>
 <td>699</td>
 <td>Hold out eval</td>
 <td>None</td>
 <td>0.38</td>
 <td>0.44</td>
 <td>0.34</td>
+<td>6 MB</td>
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>GPT3.5 ZShot + Workshop (raw)</td>
+<td>GPT3.5 + Workshop</td>
 <td>1577</td>
 <td>Hold out eval</td>
 <td>en_core_web_lg</td>
 <td>0.59</td>
 <td>0.58</td>
 <td>0.59</td>
+<td>600 MB</td>
 </tr>
 </tbody>
 </table>

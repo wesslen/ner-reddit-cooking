@@ -1,5 +1,5 @@
 ---
-format: html
+format: pdf
 execute:
   eval: false
 ---
@@ -24,7 +24,6 @@ For the next two experiments, we'll explore: quantity vs. quality. In experiment
 
 In experiment 4, we'll focus on quality, correcting ~200 workshop annotations. We'll use `review` so we can view both the model-predicted and workshop annotations. You could use `ner.manual` (original annotations) or `ner.correct` model predicted alternatively. Merging the corrected annotations with the GPT3.5 Zero Shot, yielded the `hmwk_1_train_exp4`. We'll keep using `hmwk_1_eval` as the evaluation dataset. The model attained **38%** F1 score. This indicates that while the full workshop dataset may have errors, it provides net gain in performance (quantity over quality).
 
-
 ### 5. Use word vectors (transfer learning) to improve model performance
 
 For experiment 5, we'll explore whether adding word embeddings improves model performance (see [Prodigy docs](https://prodi.gy/docs/named-entity-recognition#transfer-learning)). We used experiment 3 training dataset (best performance) and use `hmwk_1_eval` as the eval dataset. The model attained **59%** F1 score, which is the best performing model/experiment. However, this model is much larger (600MB vs 6MB); therefore, in prod, we may still want to go with model 3.
@@ -33,13 +32,13 @@ For experiment 5, we'll explore whether adding word embeddings improves model pe
 
 ### Experiment Performances
 
-| # | Training Dataset                  | Training (n) | Evaluation Dataset | Base Model     | F1   | P    | R    |
-|---|-----------------------------------|--------------|--------------------|----------------|------|------|------|
-| 1 | GPT3.5 ZShot                      | 400          | 20% of training    | None           | 0.32 | 0.44 | 0.24 |
-| 2 | GPT3.5 ZShot                      | 500          | Hold out eval      | None           | 0.36 | 0.41 | 0.31 |
-| 3 | GPT3.5 ZShot + Workshop (raw)     | 1577         | Hold out eval      | None           | 0.52 | 0.56 | 0.48 |
-| 4 | GPT3.5 ZShot + Workshop Corrected | 699          | Hold out eval      | None           | 0.38 | 0.44 | 0.34 |
-| 5 | GPT3.5 ZShot + Workshop (raw)     | 1577         | Hold out eval      | en_core_web_lg | 0.59 | 0.58 | 0.59 |
+| # | Training Dataset   | Training (n) | Evaluation       | Base Model     | F1   | P    | R    | Size   |
+|---|--------------------|--------------|------------------|----------------|------|------|------|--------|
+| 1 | GPT3.5             | 400          | 20% of training  | None           | 0.32 | 0.44 | 0.24 | 6 MB   |
+| 2 | GPT3.5             | 500          | Hold out eval    | None           | 0.36 | 0.41 | 0.31 | 6 MB   |
+| 3 | GPT3.5 + Workshop  | 1577         | Hold out eval    | None           | 0.52 | 0.56 | 0.48 | 6 MB   |
+| 4 | GPT3.5 + Corrected | 699          | Hold out eval    | None           | 0.38 | 0.44 | 0.34 | 6 MB   |
+| 5 | GPT3.5 + Workshop  | 1577         | Hold out eval    | en_core_web_lg | 0.59 | 0.58 | 0.59 | 600 MB |
 
 ### Saving Models (wheel)
 
