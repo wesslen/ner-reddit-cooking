@@ -1,3 +1,23 @@
+# Experiment Results
+
+| # | Training Dataset   | Training (n) | Evaluation       | Base Model     | F1   | P    | R    | Size   |
+|---|--------------------|--------------|------------------|----------------|------|------|------|--------|
+| 1 | GPT3.5             | 400          | 20% of training  | None           | 0.32 | 0.44 | 0.24 | 6 MB   |
+| 2 | GPT3.5             | 500          | Hold out eval    | None           | 0.36 | 0.41 | 0.31 | 6 MB   |
+| 3 | GPT3.5 + Workshop  | 1577         | Hold out eval    | None           | 0.52 | 0.56 | 0.48 | 6 MB   |
+| 4 | GPT3.5 + Corrected | 699          | Hold out eval    | None           | 0.38 | 0.44 | 0.34 | 6 MB   |
+| 5 | GPT3.5 + Workshop  | 1577         | Hold out eval    | en_core_web_lg | 0.59 | 0.58 | 0.59 | 600 MB |
+
+GPT3.5 = [Zero Shot GPT3.5 Labeled data](data/gpt3-5-zeroshot.jsonl)
+Workshop = [Full PyData NYC Workshop Annotations](data/pydata-nyc-2023.jsonl)
+Corrected = [Sample of Corrected PyData NYC Workshop Annotations](data/hmwk-1-review.jsonl)
+Hold out eval = [Sample of 200 evaluation annotations](data/eval-reddit.jsonl)
+
+F1 = NER F1 score
+P = NER Precision
+R = NER Recall
+Size = Model Size
+
 # Steps to reproduce repo
 
 1. Clone
