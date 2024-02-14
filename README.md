@@ -54,4 +54,7 @@ Now you can run it anywhere like:
 # Using spacy.load().
 import spacy
 nlp = spacy.load("en_ner_reddit_cooking")
+doc = nlp("Make a dressing with mayo, plain yogurt, curry powder, mustard powder, mustard, ground coriander.")
+doc.ents
+# (mayo, plain yogurt, curry powder, mustard powder, mustard, ground coriander)
 ```
