@@ -1,12 +1,13 @@
 # Experiment Results
 
-| # | Training Dataset   | Training (n) | Evaluation       | Base Model     | F1   | Precision    | Recall    | Model Size   |
+| # | Training Dataset   | Training (n) | Evaluation       | Base Model     | F1   | P    | R    | Size   |
 |---|--------------------|--------------|------------------|----------------|------|------|------|--------|
-| 1 | GPT3.5             | 400          | 20% of training  | None           | 0.32 | 0.44 | 0.24 | 6 MB   |
-| 2 | GPT3.5             | 500          | Hold out eval    | None           | 0.36 | 0.41 | 0.31 | 6 MB   |
-| 3 | GPT3.5 + Workshop  | 1577         | Hold out eval    | None           | 0.52 | 0.56 | 0.48 | 6 MB   |
-| 4 | GPT3.5 + Corrected | 699          | Hold out eval    | None           | 0.38 | 0.44 | 0.34 | 6 MB   |
-| 5 | GPT3.5 + Workshop  | 1577         | Hold out eval    | en_core_web_lg | 0.59 | 0.58 | 0.59 | 600 MB |
+| 1 | GPT3.5             | 400          | 20% of training  | None           | 0.32 | 0.43 | 0.28 | 6 MB   |
+| 2 | GPT3.5             | 500          | Hold out eval    | None           | 0.41 | 0.37 | 0.35 | 6 MB   |
+| 3 | Workshop           | 1163         | Hold out eval    | None           | 0.62 | 0.62 | 0.62 | 6 MB   |
+| 4 | GPT3.5 + Workshop  | 1577         | Hold out eval    | None           | 0.59 | 0.62 | 0.57 | 6 MB   |
+| 5 | Corrected + Workshop | 1263         | Hold out eval    | None           | 0.62 | 0.61 | 0.62 | 6 MB   |
+| 6 | Workshop           | 1163         | Hold out eval    | en_core_web_lg | 0.66 | 0.65 | 0.67 | 600 MB |
 
 Dataset Key:
 
@@ -14,7 +15,7 @@ GPT3.5 = [Zero Shot GPT3.5 labeled data](data/gpt3-5-zeroshot.jsonl)
 
 Workshop = [Full PyData NYC workshop annotations](data/pydata-nyc-2023.jsonl)
 
-Corrected = [Sample of corrected PyData NYC workshop annotations](data/hmwk-1-review.jsonl)
+Corrected = [Sample of corrected GPT3.5 annotations](data/hmwk-1-review.jsonl)
 
 Hold out eval = [Sample of 200 evaluation annotations](data/eval-reddit.jsonl)
 
@@ -44,3 +45,13 @@ $ env PRODIGY_KEY=XXXX-XXXX-XXXX-XXXX
 5. Run `01-writeup.qmd`. Modify `format` to get either [`docx`](/01-writeup.docx), [`html`](/01-writeup.html), or [`pdf`](/01-writeup.pdf).
 
 6. Save models as wheel files and/or to Hugging Face Hub. See https://huggingface.co/wesslen/en_ner_reddit_cooking for example.
+
+Now you can run it anywhere like:
+
+```
+!pip install https://huggingface.co/wesslen/en_ner_reddit_cooking/resolve/main/en_ner_reddit_cooking-any-py3-none-any.whl
+
+# Using spacy.load().
+import spacy
+nlp = spacy.load("en_ner_reddit_cooking")
+```
